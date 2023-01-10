@@ -6,3 +6,5 @@
 * 배한진 - pr2/bhj
 * 김성환 - SungHwan
 * 안성준 - sungjun
+* 김민종 - minjong  
+

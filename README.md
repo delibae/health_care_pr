@@ -7,4 +7,4 @@
 * 김성환 - SungHwan
 * 안성준 - sungjun
 * 김민종 - minjong  
-
+* 최민수 - minsoo

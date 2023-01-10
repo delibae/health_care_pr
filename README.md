@@ -3,6 +3,7 @@
 
 <hr/>
 
-## Branch List
-
-* 배한진: pr2/bhj
+## Members Branch Name
+* 배한진 - pr2/bhj
+* 김성환 - SungHwan
+* 안성준 - sungjun

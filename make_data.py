@@ -1,8 +1,14 @@
 import cv2
 import numpy as np
+import glob
+import pickle
+import gzip
+
+import json
+
 def get_img_list(series) :
 
-    
+    cnt = 0
     reshaped_image_list = []
 
     for file_name in series :
@@ -16,15 +22,13 @@ def get_img_list(series) :
         # cv2.waitKey(0)
         # cv2.destroyAllWindows()
         reshaped_image_list.append(reshaped_image)
-        
+        cnt += 1
+        if cnt %100 == 0:
+            print(f"{cnt/len(series):.2f} %")
     return reshaped_image_list
 
 
-import glob
-# import pickle
-# import gzip
 
-import json
 
 path = "E:/!data/label/json/*/*.json"
 
@@ -36,28 +40,38 @@ image_path = []
 dl_idx = []
 dl_name = []
 root_path = "E:/!data/data/image"
-for p in path_list[:10]:
+
+cnt = 0
+
+for p in path_list:
     with open(p, 'r',encoding="UTF-8") as file:
         data = json.load(file)
         data_path = data['images'][0]['file_name']
         image_path.append(root_path + "/" + data_path[:8] + "/" + data_path)
         dl_idx.append(data['images'][0]["dl_idx"])
         dl_name.append(data['images'][0]["dl_name"])
-    
-print(image_path)
-print(dl_idx)
-print(dl_name)
+        cnt += 1
+    if cnt %100 == 0:
+        print(f"{cnt/len(path_list):.2f} %")
+        
+# print(image_path)
+# print(dl_idx)
+# print(dl_name)
 
 reshaped_image_list = get_img_list(image_path)
 
-print(np.array(reshaped_image_list).shape)
+reshaped_image_list_n = np.array(reshaped_image_list)
 
-# reshaped_image_list = get_img_list(path_list)
+np.save('../data/dl_idx', np.array(dl_idx))
+np.save('../data/dl_name',np.array(dl_name))
+np.save('../data/ImageData',reshaped_image_list_n)
+
+# with gzip.open('ImageData.pickle', 'wb') as f:
+#     pickle.dump(reshaped_image_list, f)
+
 
 # # to define
 # file_path_l = []
 
 # data = get_img_list(file_path_l)
 
-# with gzip.open('ImageData.pickle', 'wb') as f:
-#     pickle.dump(data, f)

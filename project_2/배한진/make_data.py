@@ -17,11 +17,11 @@ def get_img_list(series) :
 
         image = cv2.resize(image, dsize=(128, 128), interpolation=cv2.INTER_AREA)
         
-        reshaped_image = image.reshape(3,128,128) #reshape
+        # reshaped_image = image.reshape(128,128) #reshape
         # cv2.imshow('image',image)
         # cv2.waitKey(0)
         # cv2.destroyAllWindows()
-        reshaped_image_list.append(reshaped_image)
+        reshaped_image_list.append(image)
         cnt += 1
         if cnt %100 == 0:
             print(f"{cnt/len(series):.2f} %")

@@ -3,10 +3,10 @@
 
 
 ## Members Branch Name
-* 배한진 - pr2/bhj
-* 김성환 - SungHwan
-* 안성준 - sungjun
-* 김민종 - minjong  
-* 최민수 - minsoo
-* 이윤영 - lyy
-
+* 배한진 - pr2/bhj   
+* 김민종 - minjong    
+* 김성환 - SungHwan   
+* 안성준 - sungjun    
+* 이윤영 - lyy   
+* 조수빈 - subin   
+* 최민수 - minsoo   

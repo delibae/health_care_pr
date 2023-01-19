@@ -2,7 +2,7 @@ from flask import Flask
 from flask import request
 from flask import make_response
 import json
-from predict import predict_6
+from predict import predictall
 
 
 app = Flask(__name__)
@@ -15,43 +15,37 @@ def hello():
 @app.route('/predict', methods=['POST'])
 def predict():
     if request.method == 'POST':
-
+        
         file = request.files['image']
         img_bytes = file.read()
 
-        
-        pr_num = predict_6(img_bytes)
-        
-        class_name = '탈모'
-        
-        class_id = '6'
-        
+                
         pr_list = ['양호', '경증', '중증도', '중증']
+        class_name_list = ['미세각질', '피지과다', '모낭사이홍반', '모낭홍반/농포', '비듬', '탈모']
         
-        pr_name = pr_list[pr_num]
+        res = {}
         
-        answer = f'{class_name}의 상태가 {pr_name} 입니다.'
+        for i in range(1,7):
+            value_name = f'value_{i}'
+            pr_num = predictall(img_bytes,i-1)
+            pr_name = pr_list[pr_num]
+            class_name = class_name_list[i-1]
+            class_id = i
+            answer = f'{class_name}의 상태가 {pr_name} 입니다.'
+            
+            to_append = {}
+            to_append['class_id'] = class_id
+            to_append['class_name'] = class_name
+            to_append['pr_num'] = pr_num
+            to_append['pr_name'] = pr_name
+            to_append['answer'] = answer
+            
+            to_append_l = []
+            to_append_l.append(to_append)
+            
+            res[value_name] = to_append_l
 
-        res = {
-            'value_1':[
-            {
-        	'class_id' : class_id,
-            'class_name' : class_name,
-            'pr_num' : pr_num,
-            'pr_name': pr_name,
-            'answer': answer
-            }
-            ],
-            'value_2':[
-            {
-            'class_id' : 1,
-            'class_name' : '모낭사이홍반',
-            'pr_num' : 1,
-            'pr_name': '경증',
-            'answer': '모낭사이 홍반의 상태가 경증 입니다.'
-            }
-            ]
-        }
+
         res = make_response(json.dumps(res, ensure_ascii=False))
         res.headers['Content-Type'] = 'application/json'
         

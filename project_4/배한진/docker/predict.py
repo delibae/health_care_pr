@@ -15,13 +15,10 @@ model.load_state_dict(torch.load(os.path.dirname(os.path.abspath(__file__)) + '/
 
 model.eval()
 
-test_in = torch.randn(1,3,224,224)
 
-outputs = model(test_in)
+model_l = []
 
-_, predicted = torch.max(outputs.data, 1)
-
-print(predicted.item())
+model_l.append(model)
 
 
 def get_transform_te():
@@ -45,15 +42,19 @@ def image_processing(image_bytes):
 
 
 
-def predict_6(image_bytes):
+def predictall(image_bytes, val_n):
     # test_in = torch.randn(1,3,224,224)
     # outputs = model(test_in)
-        
+    
+    # model_use = model_l[val_n]
+    
     real_in = image_processing(image_bytes)
     outputs = model(real_in)
     
-
+    
 
     _, predicted = torch.max(outputs.data, 1)
     
     return predicted.item()
+
+

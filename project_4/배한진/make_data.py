@@ -16,13 +16,13 @@ def get_img_list(series) :
         img_array = np.fromfile(image_path, np.uint8)
         image = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
 
-        image = cv2.resize(image, dsize=(128, 128), interpolation=cv2.INTER_AREA)
+        image = cv2.resize(image, dsize=(224, 224), interpolation=cv2.INTER_AREA)
         
-        reshaped_image = image.reshape(3,128,128) #reshape
+
         # cv2.imshow('image',image)
         # cv2.waitKey(0)
         # cv2.destroyAllWindows()
-        reshaped_image_list.append(reshaped_image)
+        reshaped_image_list.append(image)
         cnt += 1
         if cnt %100 == 0:
             print(f"{cnt*100/len(series):.2f} %")
@@ -31,7 +31,7 @@ def get_img_list(series) :
 
 
 
-path = "E:/!data/유형별 두피 이미지/data/label/모낭사이홍반/*/*.json"
+path = "E:/!data/유형별 두피 이미지/data/label/탈모/*/*.json"
 
 path_list = glob.glob(path)
 
@@ -40,7 +40,7 @@ print(len(path_list))
 image_path = []
 target = []
 
-root_path = "E:/!data/유형별 두피 이미지/data/data/모낭사이홍반"
+root_path = "E:/!data/유형별 두피 이미지/data/data/탈모"
 
 cnt = 0
 
@@ -48,7 +48,7 @@ for p in path_list:
     with open(p, 'r',encoding="UTF-8") as file:
         data = json.load(file)
         data_path = data['image_file_name']
-        value = data["value_3"]
+        value = data["value_6"]
         image_path.append(root_path + "/" + value + "/" + data_path)
         target.append(value)
         cnt += 1
@@ -66,8 +66,8 @@ reshaped_image_list = get_img_list(image_path)
 print(len(reshaped_image_list))
 reshaped_image_list_n = np.array(reshaped_image_list)
 
-np.save('../data2/target', np.array(target))
-np.save('../data2/ImageData',reshaped_image_list_n)
+np.save('../data2/target2_6', np.array(target))
+np.save('../data2/ImageData2_6',reshaped_image_list_n)
 
 # with gzip.open('ImageData.pickle', 'wb') as f:
 #     pickle.dump(reshaped_image_list, f)

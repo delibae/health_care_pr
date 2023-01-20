@@ -25,7 +25,7 @@
 
 <br/>  
 
-* docker hub https://hub.docker.com/repository/docker/baehanjin/scalp_ai_api/general  
+* docker hub https://hub.docker.com/r/baehanjin/scalp_ai_api
 
 <br/>  
 
@@ -105,7 +105,7 @@
 
 5. Docker를 사용한 배포 및 Docker Hub 업로드
 
-    * Docker Hub 주소: https://hub.docker.com/repository/docker/baehanjin/scalp_ai_api/general  
+    * Docker Hub 주소: https://hub.docker.com/r/baehanjin/scalp_ai_api 
 
 
 * 모델 평가: value_4 value_2 를 제외하고는 학습이 어느정도 잘 이루어짐. value_4 와 value_2 에 대해서는 차후 모델부분 개선이 필요해 보임. 원인으로는 라벨별 데이터의 불균형으로 판단됨. **라벨별 개수를 균등**하게 하고 학습한다면 개선될 것으로 예상됨. 나머지 모델 또한 인접한 라벨에 대한 구분을 어려워 함. 하지만 어느정도의 정확성은 있어 사용가능한 것으로 보임.

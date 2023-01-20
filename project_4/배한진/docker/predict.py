@@ -8,17 +8,24 @@ from PIL import Image
 
 import io
 
-model = torch.hub.load('NVIDIA/DeepLearningExamples:torchhub', 'nvidia_efficientnet_b4', pretrained= False)
-model._modules['classifier']._modules['fc'].out_features = 4
+# model = torch.hub.load('NVIDIA/DeepLearningExamples:torchhub', 'nvidia_efficientnet_b4', pretrained= False)
+# model._modules['classifier']._modules['fc'].out_features = 4
 
-model.load_state_dict(torch.load(os.path.dirname(os.path.abspath(__file__)) + '/nvidia_efficientnet_b4.pt'))
+# model.load_state_dict(torch.load(os.path.dirname(os.path.abspath(__file__)) + '/nvidia_efficientnet_b4_6.pt'))
 
-model.eval()
+# model.eval()
 
 
 model_l = []
 
-model_l.append(model)
+for i in range(1,7):
+  model = torch.hub.load('NVIDIA/DeepLearningExamples:torchhub', 'nvidia_efficientnet_b4', pretrained= False)
+  model._modules['classifier']._modules['fc'].out_features = 4
+
+  model.load_state_dict(torch.load(os.path.dirname(os.path.abspath(__file__)) + f'/model/nvidia_efficientnet_b4_{i}.pt'))
+  model.eval()
+  model_l.append(model)
+
 
 
 def get_transform_te():
@@ -46,10 +53,11 @@ def predictall(image_bytes, val_n):
     # test_in = torch.randn(1,3,224,224)
     # outputs = model(test_in)
     
-    # model_use = model_l[val_n]
+    model_use = model_l[val_n]
     
     real_in = image_processing(image_bytes)
-    outputs = model(real_in)
+    # real_in = torch.randn(1,3,224,224)
+    outputs = model_use(real_in)
     
     
 

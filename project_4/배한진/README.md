@@ -1,12 +1,33 @@
 # 두피 상태 예측 AI API
 
-## 사용 기술 스택
-
-<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:100px;height:100px;"><title>Vue.js</title><path d="M24,1.61H14.06L12,5.16,9.94,1.61H0L12,22.39ZM12,14.08,5.16,2.23H9.59L12,6.41l2.41-4.18h4.43Z"/></svg>
-<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:100px;height:100px;"><title>Axios</title><path d="M11.0683 2.89968V22.2973l-2.11399 1.70265V7.8638H4.975l6.0933-4.96412zM14.93426 0v15.76724H19.025l-6.20044 5.08865V1.4689L14.93426 0z"/></svg>
+## 사용 기술 스택  
 <br/>
+<img src="https://img.shields.io/badge/vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white">
+<img src="https://img.shields.io/badge/axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white">
+<img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white">
+<img src="https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=docker&logoColor=white">
+<img src="https://img.shields.io/badge/flask-000000?style=for-the-badge&logo=flask&logoColor=white">
+<img src="https://img.shields.io/badge/pytorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white">
+<img src="https://img.shields.io/badge/scikitlearn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white">  
 
- 
+<br/>  
+
+## API 문서  
+
+<br/>  
+
+* API document https://documenter.getpostman.com/view/24010364/2s8ZDX4NXT  
+  
+<br/>  
+
+## Docker Hub  
+
+<br/>  
+
+* docker hub https://hub.docker.com/repository/docker/baehanjin/scalp_ai_api/general  
+
+<br/>  
+
 
 ## 수행 목표
 <br/>
@@ -24,7 +45,9 @@
 <br/>
 
 
-## 수행 내용
+## 수행 내용  
+
+<br/>  
 
 1. 두피 상태 6종에 대한 학습 데이터셋 생성
    - torch transform 을 통한 augmentation
@@ -48,7 +71,9 @@
 <br/>
 
 
-## 수행 결과
+## 수행 결과  
+
+<br/>  
 
 1. 시험 모델 종류: VGG / ResNet / Efficient Net / GoogleNet / VIT
    * Efficient Net 모델로 선정(NVIDIA/DeepLearningExamples:torchhub / pretrained = True)  

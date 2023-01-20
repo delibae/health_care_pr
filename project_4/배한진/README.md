@@ -1,5 +1,13 @@
 # 두피 상태 예측 AI API
 
+## 사용 기술 스택
+
+<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:100px;height:100px;"><title>Vue.js</title><path d="M24,1.61H14.06L12,5.16,9.94,1.61H0L12,22.39ZM12,14.08,5.16,2.23H9.59L12,6.41l2.41-4.18h4.43Z"/></svg>
+<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:100px;height:100px;"><title>Axios</title><path d="M11.0683 2.89968V22.2973l-2.11399 1.70265V7.8638H4.975l6.0933-4.96412zM14.93426 0v15.76724H19.025l-6.20044 5.08865V1.4689L14.93426 0z"/></svg>
+<br/>
+
+ 
+
 ## 수행 목표
 <br/>
 
@@ -69,8 +77,21 @@
 
 ![test](./img/test1.png)
 
-1. Docker를 사용한 배포 및 Docker Hub 업로드
+5. Docker를 사용한 배포 및 Docker Hub 업로드
 
     * Docker Hub 주소: https://hub.docker.com/repository/docker/baehanjin/scalp_ai_api/general  
 
 
+* 모델 평가: value_4 value_2 를 제외하고는 학습이 어느정도 잘 이루어짐. value_4 와 value_2 에 대해서는 차후 모델부분 개선이 필요해 보임. 원인으로는 라벨별 데이터의 불균형으로 판단됨. **라벨별 개수를 균등**하게 하고 학습한다면 개선될 것으로 예상됨. 나머지 모델 또한 인접한 라벨에 대한 구분을 어려워 함. 하지만 어느정도의 정확성은 있어 사용가능한 것으로 보임.
+
+## 성과 및 기대효과
+
+- 모델 부분에서는 아쉬운 부분이 있지만 2개 class 를 제외하고는 학습이 어느정도 잘 이루어짐  
+
+- Flask를 통해 API 화 시켜 차후 개발자들이 편하게 사용하여 서비스를 구축할 수 있을 것으로 예상  
+
+- Docker 형태로 배포하여 환경에 상관없이 구동되는 안정성을 제공함
+
+- Vue 를 사용한 Front 구성은 차후 npm module을 사용하여 프로젝트를 쉽게 확장할 수 있을 것
+
+- 미용실과 같은 두피 관련 분야에서 소비자에게 신뢰성있게 상태를 말해주는 인공지능 서비스 구축 가능

@@ -14,7 +14,7 @@
 5.	Docker에 model 및 flask server를 담아 docker hub를 통해 배포
 
 <br/>
-<hr>  
+
 
 ## 수행 내용
 
@@ -38,7 +38,7 @@
     - docker hub를 통한 이미지 배포
 
 <br/>
-<hr/>  
+
 
 ## 수행 결과
 
@@ -47,12 +47,12 @@
   
 2. 모델 학습 결과
 
-![value_1](./img/value_1.png){height=300px width=300px}
-![value_2](./img/value_2.png){height=300px width=300px}
-![value_3](./img/value_3.png){height=300px width=300px}
-![value_4](./img/value_4.png){height=300px width=300px}
-![value_5](./img/value_5.png){height=300px width=300px}
-![value_6](./img/value_6.png){height=300px width=300px}
+![value_1](./img/value_1.png)
+![value_2](./img/value_2.png)
+![value_3](./img/value_3.png)
+![value_4](./img/value_4.png)
+![value_5](./img/value_5.png)
+![value_6](./img/value_6.png)
 
    * 위부터 아래로 value_1~6 의 confusion matrix
 
@@ -60,16 +60,16 @@
 
   * value에 따른 class_name
 
-3. Flask 를 이용하여 API 를 구축
+1. Flask 를 이용하여 API 를 구축
 
     * API document https://documenter.getpostman.com/view/24010364/2s8ZDX4NXT  
 
 
 4. Vue & axios & tailwind 를 이용한 test_page
 
-![test](./img/test.png){height=500px width=350px}
+![test](./img/test.png)
 
-5. Docker를 사용한 배포 및 Docker Hub 업로드
+1. Docker를 사용한 배포 및 Docker Hub 업로드
 
     * Docker Hub 주소: https://hub.docker.com/repository/docker/baehanjin/scalp_ai_api/general  
 

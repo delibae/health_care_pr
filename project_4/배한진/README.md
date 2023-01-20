@@ -56,7 +56,7 @@
 
    * 위부터 아래로 value_1~6 의 confusion matrix
 
-![values](./img/values.png)  
+![values](./img/values1.png)  
 
   * value에 따른 class_name
 
@@ -67,7 +67,7 @@
 
 4. Vue & axios & tailwind 를 이용한 test_page
 
-![test](./img/test.png)
+![test](./img/test1.png)
 
 1. Docker를 사용한 배포 및 Docker Hub 업로드
 

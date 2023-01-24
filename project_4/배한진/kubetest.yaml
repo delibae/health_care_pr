@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-nginx-pod
+spec:
+  containers:
+  - name: my-nginx-container
+    image: baehanjin/scalp_ai_api:1
+    ports:
+    - containerPort: 8021
+      protocol: TCP

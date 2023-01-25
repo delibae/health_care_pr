@@ -3,7 +3,7 @@
 
 
 ## Members Branch Name
-* 배한진 - pr2/bhj   
+* 배한진 - pr5/bhj   
 * 김민종 - minjong    
 * 김성환 - SungHwan   
 * 안성준 - sungjun    

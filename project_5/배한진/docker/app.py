@@ -26,14 +26,13 @@ def send_file(filename):
 #     return render_template('./api_docs/api_docs.html')
 
     
-@app.route('/predict_all', methods=['POST'])
+@app.route('/api/predict_all', methods=['POST'])
 def predict_all():
     if request.method == 'POST':
         
-
+        r_list = ['no diabetes', 'prediabete', 'diabetes']
 # ['HighBP' 'HighChol' 'BMI' 'Smoker' 'HeartDiseaseorAttack' 'PhysActivity'
 #  'Fruits' 'GenHlth' 'PhysHlth' 'DiffWalk' 'Sex' 'Age' 'Education' 'Income']            
-        pr_list = ['당뇨x', '예비 당뇨', '당뇨']
         feature_list = get_head()
         get_list = []
         for i in range(len(feature_list)):
@@ -43,81 +42,19 @@ def predict_all():
         get_list = [get_list]
         result = predict_a(get_list)
         
-        # res = {}
+        res = {}
+        res['id'] = request.form['id']
+        res['predict'] = result
+        res['predict_name'] = r_list[result]
+
         
-        # for i in range(1,7):
-        #     value_name = f'value_{i}'
-        #     pr_num = predictall(img_bytes,i-1)
-        #     pr_name = pr_list[pr_num]
-        #     class_name = class_name_list[i-1]
-        #     class_id = i
-        #     answer = f'{class_name}의 상태가 {pr_name} 입니다.'
-            
-        #     to_append = {}
-        #     to_append['class_id'] = class_id
-        #     to_append['class_name'] = class_name
-        #     to_append['pr_num'] = pr_num
-        #     to_append['pr_name'] = pr_name
-        #     to_append['answer'] = answer
-            
-        #     to_append_l = []
-        #     to_append_l.append(to_append)
-            
-        #     res[value_name] = to_append_l
-
-
-        # res = make_response(json.dumps(res, ensure_ascii=False))
-        # res.headers['Content-Type'] = 'application/json'
-        
-        return str(result)
-
-# def single_value(i,img_bytes):
-    
-#     pr_list = ['양호', '경증', '중증도', '중증']
-#     class_name_list = ['미세각질', '피지과다', '모낭사이홍반', '모낭홍반/농포', '비듬', '탈모']
-    
-#     res = {}
-    
-#     value_name = f'value_{i}'
-#     pr_num = predictall(img_bytes,i-1)
-#     pr_name = pr_list[pr_num]
-#     class_name = class_name_list[i-1]
-#     class_id = i
-#     answer = f'{class_name}의 상태가 {pr_name} 입니다.'
-    
-#     to_append = {}
-#     to_append['class_id'] = class_id
-#     to_append['class_name'] = class_name
-#     to_append['pr_num'] = pr_num
-#     to_append['pr_name'] = pr_name
-#     to_append['answer'] = answer
-    
-#     to_append_l = []
-#     to_append_l.append(to_append)
-    
-#     res[value_name] = to_append_l
-
-
-#     res = make_response(json.dumps(res, ensure_ascii=False))
-#     res.headers['Content-Type'] = 'application/json'
-    
-#     return res
-
-
-# @app.route('/predict', methods=['POST'])
-# def predict():
-#     if request.method == 'POST':
-#         file = request.files['image']
-#         img_bytes = file.read()
-#         i = request.form['value_num']
-#         # print("-----------------",i)
-#         res = single_value(int(i),img_bytes)
-#         return res
+        res = make_response(json.dumps(res, ensure_ascii=False))
+        res.headers['Content-Type'] = 'application/json'
+        return res
 
 
     
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
-    
     

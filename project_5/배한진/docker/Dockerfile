@@ -5,11 +5,15 @@ COPY . ./docker
 
 RUN pip install -r ./docker/requirements.txt
 
-RUN pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cpu
+# RUN pip3 install -U flask-cors
 
-RUN pip install -U flask-cors
+# RUN  pip3 install -U scikit-learn
 
-EXPOSE 8021
+# RUN pip3 install numpy
+
+# RUN pip3 install pandas
+
+EXPOSE 5000
 
 CMD ["python", "./docker/app.py"]
 

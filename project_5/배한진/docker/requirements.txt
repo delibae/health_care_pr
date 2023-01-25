@@ -1,3 +1,7 @@
 Flask==2.2.2
 Jinja2==3.1.2
 pillow
+pandas
+numpy
+scikit-learn
+flask-cors

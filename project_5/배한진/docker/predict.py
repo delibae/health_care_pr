@@ -1,68 +1,38 @@
-import torch
-import torchvision
-
-import torchvision.transforms as transforms
+from sklearn.neighbors import KNeighborsClassifier
+import numpy as np
 import os
+import pandas as pd
 
-from PIL import Image
+x_train = np.load(os.path.dirname(os.path.abspath(__file__)) + '/train/x_train.npy')
+y_train = np.load(os.path.dirname(os.path.abspath(__file__)) + '/train/y_train.npy')
+meta = np.load(os.path.dirname(os.path.abspath(__file__)) + '/train/meat.npy')
 
-import io
+knn = KNeighborsClassifier(n_neighbors=25)
+knn.fit(x_train , y_train)
 
-# model = torch.hub.load('NVIDIA/DeepLearningExamples:torchhub', 'nvidia_efficientnet_b4', pretrained= False)
-# model._modules['classifier']._modules['fc'].out_features = 4
-
-# model.load_state_dict(torch.load(os.path.dirname(os.path.abspath(__file__)) + '/nvidia_efficientnet_b4_6.pt'))
-
-# model.eval()
-
-
-model_l = []
-
-for i in range(1,7):
-  model = torch.hub.load('NVIDIA/DeepLearningExamples:torchhub', 'nvidia_efficientnet_b4', pretrained= False)
-  model._modules['classifier']._modules['fc'].out_features = 4
-
-  model.load_state_dict(torch.load(os.path.dirname(os.path.abspath(__file__)) + f'/model/nvidia_efficientnet_b4_{i}.pt'))
-  model.eval()
-  model_l.append(model)
+head = meta[0]
+mean = pd.Series(meta[1],dtype = float)
+std = pd.Series(meta[2],dtype = float)
 
 
 
-def get_transform_te():
-  transforms_test = transforms.Compose([
-    transforms.ToTensor(),
-    transforms.ToPILImage(),
-    transforms.Resize((224, 224)),
-    transforms.ToTensor(),
-    transforms.Normalize((0.4452, 0.4457, 0.4464), (0.2592, 0.2596, 0.2600)),
-])
-  return transforms_test
+
+def predict_a(inp):
+
+  inp = pd.DataFrame(inp,dtype = float)
+
+  inp = (inp - mean)/std
+  inp = np.array(inp)
+
+  y_pred = knn.predict(inp)
+  return int(y_pred.tolist()[0])
 
 
-def image_processing(image_bytes):
-    tr = get_transform_te()
-    image = Image.open(io.BytesIO(image_bytes))
-    out =  tr(image)
-    out = out.unsqueeze(0)
-    # print("---------",out.shape)
-    return out
+def get_head():
+  return head
 
+inp  = [[1,2,3,4,5,6,7,8,9,10,11,12,13,14]]
+h = get_head()
+print(h)
 
-
-def predictall(image_bytes, val_n):
-    # test_in = torch.randn(1,3,224,224)
-    # outputs = model(test_in)
-    
-    model_use = model_l[val_n]
-    
-    real_in = image_processing(image_bytes)
-    # real_in = torch.randn(1,3,224,224)
-    outputs = model_use(real_in)
-    
-    
-
-    _, predicted = torch.max(outputs.data, 1)
-    
-    return predicted.item()
-
-
+print(predict_a(inp))

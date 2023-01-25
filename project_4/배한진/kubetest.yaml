@@ -1,11 +1,21 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: my-nginx-pod
+  name: scalp-api
+  labels:
+    app: flask
 spec:
-  containers:
-  - name: my-nginx-container
-    image: baehanjin/scalp_ai_api:1
-    ports:
-    - containerPort: 8021
-      protocol: TCP
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask
+  template:
+    metadata:
+      labels:
+        app: flask
+    spec:
+      containers:
+      - name: scalp-api
+        image: baehanjin/scalp_ai_api:1
+        ports:
+        - containerPort: 8021

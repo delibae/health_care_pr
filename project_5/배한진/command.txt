@@ -1,0 +1,7 @@
+pip freeze > requirements.txt
+
+docker run -d -p 0.0.0.0:8021:8021/tcp --name flasktest flask_t
+
+docker build -t flask_t .
+
+docker tag flask_t:latest baehanjin/scalp_ai_api:1

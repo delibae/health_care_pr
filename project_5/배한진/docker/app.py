@@ -12,7 +12,7 @@ STATIC_PATH = os.path.join(ROOT_PATH, 'static')
 app = Flask(__name__, static_folder=STATIC_PATH, static_url_path='')
 
 CORS(app, resources={r'*': {'origins': '*'}})
-
+    
 @app.route('/', methods=['GET'])
 def root():
     return app.send_static_file('index.html')

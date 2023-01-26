@@ -84,11 +84,13 @@ export default {
   },
   methods: {
     sendPost: function () {
-
-      var url = 'http://127.0.0.1:5000/api/predict_all';
-      const frm = new FormData()
-      var f_list = this.f_list
-      console.log(f_list)
+      var port = window.location.host;
+      var protocol = window.location.protocol;
+      var url =  protocol + "//" + port + '/api/predict_all';
+      console.log(url);
+      const frm = new FormData();
+      var f_list = this.f_list;
+      console.log(f_list);
       for (var step = 0; step < f_list.length; step++) {
         var to_in = document.getElementById(f_list[step][0]).value;
         frm.append(f_list[step][0], to_in);

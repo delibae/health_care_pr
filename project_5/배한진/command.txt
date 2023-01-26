@@ -1,7 +1,12 @@
-pip freeze > requirements.txt
+docker run -d -p 0.0.0.0:5000:5000/tcp --name diabetes_t baehanjin/diabetes
 
-docker run -d -p 0.0.0.0:8021:8021/tcp --name flasktest flask_t
+docker build -t baehanjin/diabetes .
 
-docker build -t flask_t .
 
-docker tag flask_t:latest baehanjin/scalp_ai_api:1
+minikube start --extra-config=apiserver.service-node-port-range=5000-5021
+
+
+kubectl apply -f minikube.yaml
+
+kubectl expose deployment diabetes --port=81 --target-port=5000 \
+        --name=example-service --type=LoadBalancer

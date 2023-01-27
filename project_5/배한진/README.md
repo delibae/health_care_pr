@@ -166,7 +166,8 @@
 
     <em>minikube start</em>
 
-    ![stsatic](./img/minikube.png)
+    ![stsatic](./img/minikube.png)  
+    
     <em>minikube.yaml(deployment)</em>
 
     <code>kubectl expose deployment diabetes --port=8080 --target-port=5000 \
@@ -175,6 +176,7 @@
     <em>export to service</em>
 
     ![stsatic](./img/dashboard.png)  
+
     <em>minikube dashboard</em>
 
 

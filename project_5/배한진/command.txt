@@ -8,5 +8,5 @@ minikube start --extra-config=apiserver.service-node-port-range=5000-5021
 
 kubectl apply -f minikube.yaml
 
-kubectl expose deployment diabetes --port=81 --target-port=5000 \
+kubectl expose deployment diabetes --port=8080 --target-port=5000 \
         --name=example-service --type=LoadBalancer

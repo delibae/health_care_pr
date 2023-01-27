@@ -19,4 +19,4 @@ spec:
         image: baehanjin/diabetes
         env:
         - name: "PORT"
-          value: "50000"
+          value: "5000"

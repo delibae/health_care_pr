@@ -174,7 +174,7 @@
     </code>  
     <em>export to service</em>
 
-    ![stsatic](./img/dashboard.png)
+    ![stsatic](./img/dashboard.png)  
     <em>minikube dashboard</em>
 
 
@@ -206,4 +206,7 @@
 
 ## 성과 및 기대효과
 
+<br/>
+
+1. 
 

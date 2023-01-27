@@ -54,7 +54,7 @@
 <br/>  
 
 
-## Dataset
+## Colab
 
 <br/>  
 
@@ -167,7 +167,7 @@
     <em>minikube start</em>
 
     ![stsatic](./img/minikube.png)  
-    
+
     <em>minikube.yaml(deployment)</em>
 
     <code>kubectl expose deployment diabetes --port=8080 --target-port=5000 \
@@ -210,5 +210,16 @@
 
 <br/>
 
-1. 
+- 데이터셋이 머신러닝에 적합하지 않아 적용하지는 않았지만 저용량으로 서비스를 구현할 수 있었음.
+
+- Flask를 통해 API 화 시켜 차후 개발자들이 편하게 사용하여 서비스를 구축할 수 있을 것으로 예상
+
+- Docker 형태로 배포하여 환경에 상관없이 구동되는 안정성을 제공함  
+  
+- Vue 를 사용한 Front 구성은 차후 npm module을 사용하여 프로젝트를 쉽게 확장할 수 있을 것  
+
+- 쿠버네티스를 활용한 서비스 배포를 통해 안정적으로 대규모 서비스를 관리할 수 있을 것
+
+- GCP 제공하는 모니터링을 통해서 알림설정 등 프로메테우스의 역할을 대신할 수 있을 것
+
 
